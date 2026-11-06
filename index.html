@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ALTP Travaux Publics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..900&display=swap" rel="stylesheet">
+<style>
+/* Page « Présentation » : bleu nuit et or du logo, Archivo élargie comme le logotype.
+   Ordre : fil d'Ariane, grande photo, intro + équipe, équipes de travaux, photo, chiffres clés, valeurs, deux photos, appel à l'action, pied de page. */
+:root{
+  --marine:#0b1b35;
+  --marine-2:#071226;
+  --fond:#f4f2ec;
+  --gris:#e2dfd6;
+  --accent:#cd9a1a;
+  --accent-fonce:#a87c10;
+  --texte:#18202e;
+  --texte-doux:#555c68;
+  --blanc:#ffffff;
+  --display:"Archivo","Arial Black",Arial,sans-serif;
+  --body:"Archivo","Segoe UI",Helvetica,Arial,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{background:var(--blanc);color:var(--texte);font-family:var(--body);font-size:17px;line-height:1.65}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+h1,h2,h3{font-family:var(--display);font-stretch:125%;font-weight:800;line-height:1.1;text-wrap:balance;color:var(--marine)}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+.etroit{max-width:820px}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:12px;top:12px;background:var(--blanc);padding:8px 12px;z-index:50}
+
+/* En-tête */
+header{background:var(--fond);border-bottom:1px solid var(--gris);position:sticky;top:0;z-index:20}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:92px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo img{display:block;height:58px;width:auto}
+.menu{display:flex;align-items:center;gap:6px;list-style:none}
+.menu > li{position:relative}
+.menu > li > a,.menu > li > button{display:block;padding:10px 14px;font:600 1rem var(--body);color:var(--marine);text-decoration:none;background:none;border:0;cursor:pointer}
+.menu > li > button::after{content:"";display:inline-block;margin-left:7px;border:5px solid transparent;border-top-color:var(--accent);transform:translateY(3px)}
+.menu > li:hover > a,.menu > li:hover > button{color:var(--accent-fonce)}
+.sous{position:absolute;top:100%;left:0;min-width:240px;background:var(--blanc);border-top:3px solid var(--accent);box-shadow:0 12px 30px rgba(20,35,74,.14);list-style:none;padding:8px 0;display:none}
+.menu > li:hover .sous,.menu > li:focus-within .sous{display:block}
+.sous a{display:block;padding:9px 18px;text-decoration:none;font-size:.96rem}
+.sous a:hover{background:var(--fond);color:var(--accent-fonce)}
+.menu .actif > button{box-shadow:inset 0 -3px 0 var(--accent)}
+.reseaux{display:flex;gap:8px}
+.reseaux a{width:36px;height:36px;display:grid;place-items:center;background:var(--fond);color:var(--marine);text-decoration:none;font-weight:700;font-size:.85rem}
+.reseaux a:hover{background:var(--marine);color:var(--blanc)}
+.nav-tel{padding:12px 18px}
+.burger{display:none;font:600 1rem var(--body);background:var(--marine);color:var(--blanc);border:0;padding:10px 16px;cursor:pointer}
+
+/* Fil d'Ariane */
+.ariane{background:var(--fond);font-size:.9rem;color:var(--texte-doux);padding:12px 0}
+.ariane a{text-decoration:none;color:var(--marine)}
+.ariane a:hover{color:var(--accent-fonce)}
+
+/* Photos à fournir */
+.photo{position:relative;background:linear-gradient(135deg,#1a2d52,#0b1b35);overflow:hidden;display:grid;place-items:center}
+.photo svg.decor{position:absolute;inset:0;width:100%;height:100%}
+.photo .etiq{position:relative;background:rgba(255,255,255,.92);color:var(--marine);font-weight:600;font-size:.88rem;padding:8px 14px;border-left:4px solid var(--accent)}
+.hero-photo{height:min(52vw,460px)}
+.large-photo{height:min(46vw,400px);margin:0}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.duo .photo{aspect-ratio:4/3}
+
+section{padding:76px 0}
+h1{font-size:clamp(2.1rem,4.6vw,3.3rem);font-weight:800;letter-spacing:.01em;text-transform:uppercase}
+h2{font-size:clamp(1.55rem,3vw,2.15rem);font-weight:800;text-transform:uppercase;margin-bottom:22px}
+h2::after{content:"";display:block;width:56px;height:4px;background:var(--accent);margin-top:14px}
+.chapo{font-size:1.25rem;font-weight:600;color:var(--marine);margin:18px 0 20px}
+p + p{margin-top:14px}
+.texte p{color:var(--texte)}
+
+/* Listes de personnes */
+.equipe{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:26px 0}
+.equipe li{background:var(--fond);padding:16px 18px;border-left:4px solid var(--marine);display:grid;gap:2px}
+.equipe b{font-family:var(--display);font-stretch:125%;font-weight:700;font-size:1rem;color:var(--marine);text-transform:uppercase;letter-spacing:.02em}
+.equipe span{font-size:.94rem;color:var(--texte-doux)}
+.ph{background:#fbf1d6;border:1px dashed var(--accent);padding:0 5px}
+.zone{display:flex;gap:12px;align-items:flex-start;background:var(--marine);color:var(--blanc);padding:18px 22px;margin:26px 0}
+.zone svg{flex:none;margin-top:3px}
+
+.boutons{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-stretch:125%;font-weight:800;text-transform:uppercase;letter-spacing:.1em;font-size:.86rem;padding:15px 26px;background:var(--accent);color:var(--marine);text-decoration:none;border:2px solid var(--accent);transition:background .15s,color .15s}
+.btn:hover{background:var(--marine);border-color:var(--marine);color:var(--blanc)}
+.btn.contour{background:transparent;color:var(--marine);border-color:var(--marine)}
+.btn.contour:hover{background:var(--marine);color:var(--blanc)}
+.btn .fl{transition:transform .15s}
+.btn:hover .fl{transform:translateX(4px)}
+
+/* Équipes de travaux */
+.fond{background:var(--fond)}
+.chefs{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:30px}
+.chefs li{background:var(--blanc);padding:20px;display:grid;gap:6px;border-top:4px solid var(--accent)}
+.chefs .metier{font-family:var(--display);font-stretch:125%;font-weight:800;text-transform:uppercase;color:var(--marine);font-size:.95rem;letter-spacing:.03em;line-height:1.1}
+.chefs .chef{font-size:.92rem;color:var(--texte-doux)}
+
+/* Chiffres clés */
+.chiffres{background:var(--marine);color:var(--blanc)}
+.chiffres h2{color:var(--blanc)}
+.chiffres-grid{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);gap:2px;background:rgba(255,255,255,.12);margin-top:10px}
+.chiffres-grid li{background:var(--marine);padding:28px 20px;display:grid;gap:6px;align-content:start}
+.chiffres-grid strong{font-family:var(--display);font-stretch:125%;font-weight:800;font-size:clamp(1.5rem,2.4vw,2rem);line-height:1;color:var(--accent);font-variant-numeric:tabular-nums}
+.chiffres-grid span{font-size:.95rem;color:#d4dae8}
+.note{font-size:.82rem;color:#aab4cc;margin-top:16px}
+
+/* Valeurs */
+.valeurs p{font-size:1.08rem}
+.valeurs p:first-of-type{font-size:1.25rem;font-weight:600;color:var(--marine)}
+
+.lien-suite{display:inline-flex;gap:10px;margin-top:22px;font-family:var(--display);font-stretch:125%;font-weight:800;font-size:.9rem;text-transform:uppercase;letter-spacing:.08em;color:var(--marine);text-decoration:none;border-bottom:3px solid var(--accent);padding-bottom:3px}
+.lien-suite:hover{color:var(--accent-fonce)}
+
+/* CTA */
+.cta{background:var(--fond);text-align:center}
+.cta h2::after{margin-left:auto;margin-right:auto}
+.cta p{color:var(--texte-doux);max-width:52ch;margin:0 auto}
+.cta .boutons{justify-content:center}
+.haut{display:block;text-align:center;padding:18px 0;font-weight:600;color:var(--marine);text-decoration:none;font-size:.92rem}
+.haut:hover{color:var(--accent-fonce)}
+
+/* Pied de page */
+footer{background:var(--marine-2);color:#c3cbe0;padding:56px 0 0;font-size:.95rem}
+.foot{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px;padding-bottom:40px}
+footer .logo img{height:64px}
+footer h3{color:var(--accent);font-size:.95rem;text-transform:uppercase;margin-bottom:14px;letter-spacing:.04em}
+footer ul{list-style:none;display:grid;gap:8px}
+footer a{text-decoration:none}
+footer a:hover{color:var(--accent)}
+.adresse{margin-top:18px;display:grid;gap:4px}
+footer .reseaux{margin-top:18px}
+footer .reseaux a{background:rgba(255,255,255,.08);color:var(--blanc)}
+footer .ph,.zone .ph{color:var(--texte)}
+.legal{border-top:1px solid rgba(255,255,255,.12);padding:18px 0;font-size:.85rem;display:flex;flex-wrap:wrap;gap:8px 22px;color:#9aa5c2}
+
+@media (max-width:980px){
+  .menu,.nav .reseaux,.nav-tel{display:none}
+  .burger{display:block}
+  .nav.ouvert{flex-wrap:wrap}
+  .nav.ouvert .menu{display:flex;flex-direction:column;align-items:stretch;width:100%;padding-bottom:14px}
+  .nav.ouvert .sous{display:block;position:static;box-shadow:none;border-top:0;padding:0 0 0 14px}
+  .chefs{grid-template-columns:repeat(2,1fr)}
+  .chiffres-grid{grid-template-columns:repeat(2,1fr)}
+  .foot{grid-template-columns:1fr 1fr}
+}
+@media (max-width:620px){
+  .equipe,.chefs,.duo,.foot{grid-template-columns:1fr}
+  .chiffres-grid{grid-template-columns:1fr}
+  section{padding:56px 0}
+}
+
+/* Métiers */
+.metiers{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}
+.metiers li{background:var(--blanc);padding:22px 20px;display:grid;gap:8px;border-top:4px solid var(--accent);align-content:start}
+.metiers .nom{font-family:var(--display);font-stretch:125%;font-weight:800;text-transform:uppercase;color:var(--marine);font-size:.95rem;letter-spacing:.03em;line-height:1.2}
+.metiers .desc{font-size:.92rem;color:var(--texte-doux);line-height:1.5}
+.coord{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:30px;text-align:left}
+.coord li.large{grid-column:1/-1}
+.coord li{background:var(--blanc);padding:20px;display:grid;gap:4px;border-left:4px solid var(--marine)}
+.coord b{font-family:var(--display);font-stretch:125%;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-fonce)}
+.coord span{font-weight:600;color:var(--marine)}
+.legal-bloc{border-top:1px solid rgba(255,255,255,.12);padding:22px 0;font-size:.85rem;color:#9aa5c2;display:grid;gap:4px}
+.legal-bloc b{color:#c3cbe0}
+@media (max-width:980px){.metiers{grid-template-columns:repeat(2,1fr)}.coord{grid-template-columns:1fr}}
+@media (max-width:620px){.metiers{grid-template-columns:1fr}}
+
+/* Réalisations */
+.real{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:18px;align-items:stretch;margin-top:10px}
+.real-texte{background:var(--blanc);padding:30px 28px;display:grid;gap:14px;align-content:start;border-top:4px solid var(--accent)}
+.real-cat{font-family:var(--display);font-stretch:125%;font-weight:700;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-fonce)}
+.real-texte h3{font-size:1.3rem;text-transform:uppercase}
+.real-texte p{font-size:.98rem}
+.real dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:.92rem;border-top:1px solid var(--gris);padding-top:14px}
+.real dt{color:var(--texte-doux)}
+.real dd{font-weight:600;color:var(--marine)}
+.real-photo{margin:0;overflow:hidden;background:var(--marine)}
+.real-photo img{display:block;width:100%;height:100%;object-fit:cover;aspect-ratio:3/4;transition:transform .4s}
+.real-photo:hover img{transform:scale(1.03)}
+.real + .real{margin-top:18px}
+.real.trois{grid-template-columns:1.1fr 1fr 1fr 1fr}
+@media (max-width:980px){.real,.real.trois{grid-template-columns:1fr 1fr}.real.trois .real-photo:last-child{grid-column:1/-1}.real.trois .real-photo:last-child img{aspect-ratio:16/10}.real-texte{grid-column:1/-1}}
+@media (max-width:620px){.real,.real.trois{grid-template-columns:1fr}}
+
+/* Diaporama */
+.diapo{position:relative;height:min(56vw,520px);background:var(--marine);overflow:hidden}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity .9s ease;display:block;text-decoration:none}
+.slide.actif{opacity:1;z-index:1}
+.slide img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.02);transition:transform 6s ease}
+.slide.actif img{transform:scale(1.07)}
+.slide::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(7,18,38,.82) 0%,rgba(7,18,38,.15) 45%,rgba(7,18,38,0) 70%)}
+.legende{position:absolute;left:max(24px,calc((100% - 1140px)/2 + 24px));bottom:56px;z-index:2;display:grid;gap:6px;color:var(--blanc);max-width:620px}
+.leg-cat{font-family:var(--display);font-stretch:125%;font-weight:700;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.leg-titre{font-family:var(--display);font-stretch:125%;font-weight:800;font-size:clamp(1.3rem,3vw,2.2rem);text-transform:uppercase;line-height:1.1;text-wrap:balance}
+.leg-lien{font-weight:600;font-size:.95rem;border-bottom:2px solid var(--accent);justify-self:start;padding-bottom:2px}
+.slide:hover .leg-lien{color:var(--accent)}
+.fleche{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:48px;height:48px;border:0;background:rgba(255,255,255,.88);color:var(--marine);font-size:2rem;line-height:1;cursor:pointer;display:grid;place-items:center}
+.fleche:hover{background:var(--accent)}
+.prec{left:16px}.suiv{right:16px}
+.dots{position:absolute;z-index:3;bottom:22px;left:50%;transform:translateX(-50%);display:flex;gap:8px}
+.dot{width:28px;height:5px;border:0;padding:0;background:rgba(255,255,255,.45);cursor:pointer}
+.dot.actif{background:var(--accent)}
+.real{scroll-margin-top:110px}
+@media (max-width:620px){.fleche{display:none}.legende{bottom:44px}.diapo{height:72vw}}
+@media (prefers-reduced-motion:reduce){.slide,.slide img{transition:none}.slide.actif img{transform:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<a class="skip" href="#pied">Aller au pied de page</a>
+
+<header>
+  <div class="wrap nav" id="nav">
+    <a class="logo" href="#haut"><img src="logo.png" alt="ALTP Travaux Publics" width="465" height="164"></a>
+    <ul class="menu">
+      <li class="actif"><button type="button" aria-haspopup="true">L'entreprise</button>
+        <ul class="sous">
+          <li><a href="#contenu">Présentation</a></li>
+          <li><a href="#chiffres">Chiffres clés</a></li>
+          <li><a href="#valeurs">Nos valeurs</a></li>
+        </ul>
+      </li>
+      <li><button type="button" aria-haspopup="true">Nos métiers</button>
+        <ul class="sous">
+          <li><a href="#metiers">Terrassement</a></li>
+          <li><a href="#metiers">Réseaux</a></li>
+          <li><a href="#metiers">Aménagement</a></li>
+          <li><a href="#metiers">Voirie</a></li>
+          <li><a href="#metiers">Maçonnerie et cours</a></li>
+          <li><a href="#metiers">Démolition</a></li>
+          <li><a href="#metiers">Location d'engins avec chauffeur</a></li>
+        </ul>
+      </li>
+      <li><a href="#realisations">Références</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="btn nav-tel" href="tel:+33680667713">06 80 66 77 13</a>
+    <button class="burger" type="button" id="burger" aria-expanded="false">Menu</button>
+  </div>
+</header>
+
+<div class="ariane" id="haut">
+  <div class="wrap"><a href="#haut">Accueil</a> / Présentation</div>
+</div>
+
+<div class="diapo" id="diapo" aria-roledescription="carrousel" aria-label="Photos de nos chantiers">
+    <a class="slide actif" href="#real-plesidy" aria-label="Aménagement d'une cour à Plésidy : voir la réalisation">
+      <img src="plesidy-cour.jpg" alt="Cour pavée devant une longère en pierre">
+      <span class="legende"><span class="leg-cat">Nos réalisations</span><span class="leg-titre">Aménagement d'une cour à Plésidy</span><span class="leg-lien">Voir le chantier →</span></span>
+    </a>
+    <a class="slide" href="#real-abords" aria-label="Abords d'un bâtiment d'activité : voir la réalisation" aria-hidden="true" tabindex="-1">
+      <img src="zone-paves.jpg" alt="Pose de pavés devant un bâtiment d'activité" loading="lazy">
+      <span class="legende"><span class="leg-cat">Nos réalisations</span><span class="leg-titre">Abords d'un bâtiment d'activité</span><span class="leg-lien">Voir le chantier →</span></span>
+    </a>
+    <a class="slide" href="#real-marquage" aria-label="Marquage au sol d'un site industriel : voir la réalisation" aria-hidden="true" tabindex="-1">
+      <img src="marquage-quais.jpg" alt="Marquages devant des quais de chargement" loading="lazy">
+      <span class="legende"><span class="leg-cat">Nos réalisations</span><span class="leg-titre">Marquage au sol d'un site industriel</span><span class="leg-lien">Voir le chantier →</span></span>
+    </a>
+    <a class="slide" href="#real-plesidy" aria-label="Aménagement d'une cour à Plésidy : voir la réalisation" aria-hidden="true" tabindex="-1">
+      <img src="plesidy-entree.jpg" alt="Entrée pavée entre deux murets en pierre" loading="lazy">
+      <span class="legende"><span class="leg-cat">Nos réalisations</span><span class="leg-titre">Aménagement d'une cour à Plésidy</span><span class="leg-lien">Voir le chantier →</span></span>
+    </a>
+    <a class="slide" href="#real-abords" aria-label="Abords d'un bâtiment d'activité : voir la réalisation" aria-hidden="true" tabindex="-1">
+      <img src="zone-bordures.jpg" alt="Terrassement et pose de bordures" loading="lazy">
+      <span class="legende"><span class="leg-cat">Nos réalisations</span><span class="leg-titre">Abords d'un bâtiment d'activité</span><span class="leg-lien">Voir le chantier →</span></span>
+    </a>
+    <a class="slide" href="#real-marquage" aria-label="Marquage au sol d'un site industriel : voir la réalisation" aria-hidden="true" tabindex="-1">
+      <img src="marquage-voie.jpg" alt="Ligne de marquage sur une voie de circulation" loading="lazy">
+      <span class="legende"><span class="leg-cat">Nos réalisations</span><span class="leg-titre">Marquage au sol d'un site industriel</span><span class="leg-lien">Voir le chantier →</span></span>
+    </a>
+    <a class="slide" href="#real-abords" aria-label="Abords d'un bâtiment d'activité : voir la réalisation" aria-hidden="true" tabindex="-1">
+      <img src="zone-nuit.jpg" alt="Abords terminés, de nuit" loading="lazy">
+      <span class="legende"><span class="leg-cat">Nos réalisations</span><span class="leg-titre">Abords d'un bâtiment d'activité</span><span class="leg-lien">Voir le chantier →</span></span>
+    </a>
+  <button type="button" class="fleche prec" aria-label="Photo précédente">‹</button>
+  <button type="button" class="fleche suiv" aria-label="Photo suivante">›</button>
+  <div class="dots"><button type="button" class="dot actif" aria-label="Photo 1"></button><button type="button" class="dot" aria-label="Photo 2"></button><button type="button" class="dot" aria-label="Photo 3"></button><button type="button" class="dot" aria-label="Photo 4"></button><button type="button" class="dot" aria-label="Photo 5"></button><button type="button" class="dot" aria-label="Photo 6"></button><button type="button" class="dot" aria-label="Photo 7"></button></div>
+</div>
+
+<main id="contenu">
+<section>
+  <div class="wrap etroit texte">
+    <h1>Présentation</h1>
+    <p class="chapo">ALTP, une entreprise de travaux publics à taille humaine, installée à Plouisy près de Guingamp.</p>
+    <p>Créée en 2025 par David Pierre, ALTP est une SARL qui réalise des travaux de terrassement, de réseaux, de voirie et d'aménagement pour les particuliers, les entreprises et les collectivités. Notre équipe de trois personnes suit chaque chantier de bout en bout, de l'étude du devis à la livraison.</p>
+    <p>L'entreprise est organisée autour de :</p>
+    <ul class="equipe">
+      <li><b>David Pierre</b><span>Gérant, chargé d'études et de devis</span></li>
+      <li><b>Morgan Pierre</b><span>Responsable atelier et matériel</span></li>
+    </ul>
+    <div class="zone">
+      <svg width="20" height="24" viewBox="0 0 20 24" aria-hidden="true"><path d="M10 0C4.5 0 0 4.4 0 9.8 0 17 10 24 10 24s10-7 10-14.2C20 4.4 15.5 0 10 0zm0 13.5a3.7 3.7 0 1 1 0-7.4 3.7 3.7 0 0 1 0 7.4z" fill="#cd9a1a"/></svg>
+      <span>Nous intervenons dans les Côtes-d'Armor (22), dans un rayon de 100 km autour de notre dépôt de Plouisy, à côté de Guingamp.</span>
+    </div>
+    <div class="boutons">
+      <a class="btn" href="#contact">Nous contacter <span class="fl">→</span></a>
+      <a class="btn contour" href="#metiers">Nos métiers <span class="fl">→</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="fond" id="metiers">
+  <div class="wrap">
+    <div class="etroit texte" style="margin:0">
+      <h2>Nos métiers</h2>
+      <p>Avec notre propre matériel, nous prenons en charge vos travaux du terrassement aux finitions en pierre.</p>
+    </div>
+    <ul class="metiers">
+      <li><span class="nom">Terrassement</span><span class="desc">Décapage, déblais, remblais, fouilles et plateformes.</span></li>
+      <li><span class="nom">Réseaux</span><span class="desc">Assainissement, eau potable et réseaux secs.</span></li>
+      <li><span class="nom">Assainissement non collectif</span><span class="desc">Création et mise aux normes de systèmes individuels.</span></li>
+      <li><span class="nom">Aménagement</span><span class="desc">VRD, lotissements et espaces extérieurs.</span></li>
+      <li><span class="nom">Voirie</span><span class="desc">Enrobés, bordures, accès, parkings et marquage au sol.</span></li>
+      <li><span class="nom">Enrochement</span><span class="desc">Murs en blocs, talus et soutènements.</span></li>
+      <li><span class="nom">Maçonnerie et aménagement de cours</span><span class="desc">Murs et murets en pierre, pavage, caniveaux et accès.</span></li>
+      <li><span class="nom">Démolition</span><span class="desc">Déconstruction et évacuation des gravats.</span></li>
+      <li><span class="nom">Location d'engins avec chauffeur</span><span class="desc">Nos engins et un conducteur pour vos chantiers.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="chiffres" id="chiffres">
+  <div class="wrap">
+    <h2>Chiffres clés</h2>
+    <ul class="chiffres-grid">
+      <li><strong>2025</strong><span>année de création</span></li>
+      <li><strong>3</strong><span>personnes dans l'équipe</span></li>
+      <li><strong>50 / 50</strong><span>marchés privés et publics, en %</span></li>
+      <li><strong>100 km</strong><span>rayon d'intervention autour de Plouisy</span></li>
+      <li><strong>9</strong><span>métiers des travaux publics</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="valeurs">
+  <div class="wrap etroit texte valeurs">
+    <h2>Nos valeurs</h2>
+    <p>La confiance de nos clients se gagne sur le terrain, chantier après chantier.</p>
+    <p>Chez ALTP, nous tenons ce que nous annonçons : un prix clair, un délai respecté et un chantier propre à la livraison. Vous avez un seul interlocuteur du premier rendez-vous jusqu'à la réception des travaux.</p>
+    <p>Notre petite structure est un atout : nous sommes réactifs, proches de nos clients et attentifs à la sécurité sur chaque chantier.</p>
+  </div>
+</section>
+
+<section class="fond" id="realisations">
+  <div class="wrap">
+    <h2>Nos réalisations</h2>
+    <article class="real" id="real-plesidy">
+      <div class="real-texte">
+        <span class="real-cat">Maçonnerie et aménagement de cours</span>
+        <h3>Aménagement d'une cour à Plésidy</h3>
+        <p>Nous avons entièrement réaménagé la cour et l'entrée de cette longère en pierre : terrassement, création des réseaux d'évacuation, pose de pavés en pierre naturelle, construction de murets en pierre et installation d'un caniveau à grille pour récupérer les eaux de pluie.</p>
+        <dl>
+          <dt>Lieu</dt><dd>Plésidy (22)</dd>
+          <dt>Période</dt><dd>2025-2026</dd>
+          <dt>Travaux</dt><dd>Terrassement, réseaux, pavage, murs en pierre, caniveau</dd>
+        </dl>
+      </div>
+      <figure class="real-photo"><img src="plesidy-cour.jpg" alt="Cour pavée devant une longère en pierre à Plésidy" width="825" height="1100" loading="lazy"></figure>
+      <figure class="real-photo"><img src="plesidy-entree.jpg" alt="Entrée pavée entre deux murets en pierre, avec caniveau à grille, à Plésidy" width="825" height="1100" loading="lazy"></figure>
+    </article>
+    <article class="real trois" id="real-abords">
+      <div class="real-texte">
+        <span class="real-cat">Aménagement et voirie</span>
+        <h3>Aménagement des abords d'un bâtiment d'activité</h3>
+        <p>Pour les abords de ce nouveau bâtiment, nous avons réalisé le terrassement de la plateforme, l'implantation et la pose des bordures, puis la pose des pavés des allées et des places de stationnement.</p>
+        <dl>
+          <dt>Travaux</dt><dd>Terrassement, bordures, pavage</dd>
+        </dl>
+      </div>
+      <figure class="real-photo"><img src="zone-bordures.jpg" alt="Terrassement et pose de bordures devant un bâtiment d'activité, avec une chargeuse sur le chantier" width="825" height="1100" loading="lazy"></figure>
+      <figure class="real-photo"><img src="zone-paves.jpg" alt="Pose de pavés devant un bâtiment d'activité, avec une pelle et un compacteur" width="733" height="1100" loading="lazy"></figure>
+      <figure class="real-photo"><img src="zone-nuit.jpg" alt="Abords pavés et voirie terminés devant le bâtiment, de nuit" width="1078" height="1100" loading="lazy"></figure>
+    </article>
+    <article class="real" id="real-marquage">
+      <div class="real-texte">
+        <span class="real-cat">Voirie et marquage au sol</span>
+        <h3>Marquage au sol d'un site industriel</h3>
+        <p>Sur le site d'un bâtiment industriel, nous avons réalisé le marquage au sol des voies de circulation, des passages piétons et des zones devant les quais de chargement, pour sécuriser les déplacements des poids lourds et des piétons.</p>
+        <dl>
+          <dt>Lieu</dt><dd>Secteur de Rennes (35)</dd>
+          <dt>Travaux</dt><dd>Marquage au sol, passages piétons, zones de quais</dd>
+        </dl>
+      </div>
+      <figure class="real-photo"><img src="marquage-quais.jpg" alt="Passages piétons et zones peintes devant les quais de chargement d'un bâtiment industriel" width="1100" height="958" loading="lazy"></figure>
+      <figure class="real-photo"><img src="marquage-voie.jpg" alt="Ligne blanche de marquage le long d'une voie de circulation sur un site industriel" width="825" height="1100" loading="lazy"></figure>
+    </article>
+    <a class="lien-suite" href="#contact">Un projet similaire ? Contactez-nous →</a>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="wrap">
+    <h2>Des questions ?</h2>
+    <p>Un projet de terrassement, de réseaux ou de voirie ? Appelez-nous ou écrivez-nous : nous nous déplaçons sur votre terrain pour établir un devis.</p>
+    <ul class="coord">
+      <li><b>Portable</b><span>06 80 66 77 13</span></li>
+      <li><b>Fixe</b><span>02 96 13 42 35</span></li>
+      <li><b>E-mail</b><span>Altp2235@orange.fr</span></li>
+      <li><b>Adresse</b><span>11 Park an Trebe, 22200 Plouisy</span></li>
+      <li class="large"><b>Horaires</b><span>Du lundi au vendredi, 8h00 – 12h00 et 13h30 – 18h00</span></li>
+    </ul>
+    <div class="boutons">
+      <a class="btn" href="tel:+33680667713">Appeler le portable <span class="fl">→</span></a>
+      <a class="btn" href="tel:+33296134235">Appeler le fixe <span class="fl">→</span></a>
+      <a class="btn contour" href="mailto:Altp2235@orange.fr">Envoyer un e-mail <span class="fl">→</span></a>
+    </div>
+  </div>
+</section>
+<a class="haut" href="#haut">↑ Retour en haut</a>
+</main>
+
+<footer id="pied">
+  <div class="wrap foot">
+    <div>
+      <a class="logo" href="#haut"><img src="logo-blanc.png" alt="ALTP Travaux Publics" width="465" height="164"></a>
+      <div class="adresse">
+        <span>ALTP SARL</span>
+        <span>11 Park an Trebe</span>
+        <span>22200 Plouisy</span>
+        <span>Portable : 06 80 66 77 13</span>
+        <span>Fixe : 02 96 13 42 35</span>
+        <span>Altp2235@orange.fr</span>
+      </div>
+    </div>
+    <div>
+      <h3>Nos métiers</h3>
+      <ul>
+        <li><a href="#metiers">Terrassement</a></li>
+        <li><a href="#metiers">Réseaux</a></li>
+        <li><a href="#metiers">Aménagement</a></li>
+        <li><a href="#metiers">Voirie</a></li>
+        <li><a href="#metiers">Maçonnerie et cours</a></li>
+        <li><a href="#metiers">Démolition</a></li>
+        <li><a href="#metiers">Location d'engins</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>ALTP</h3>
+      <ul>
+        <li><a href="#contenu">Présentation</a></li>
+        <li><a href="#chiffres">Chiffres clés</a></li>
+        <li><a href="#realisations">Références</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap legal-bloc" id="mentions">
+    <span><b>Mentions légales</b> · ALTP, SARL au capital de 500 € · Siège : 11 Park an Trebe, 22200 Plouisy · SIRET 987 940 863 00010 · TVA FR17987940863</span>
+    <span>Directeur de la publication : David Pierre · Hébergeur : GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis (GitHub Pages)</span>
+    <span>© 2026 ALTP Travaux Publics · altp.fr</span>
+  </div>
+</footer>
+
+<script>
+var b = document.getElementById('burger'), n = document.getElementById('nav');
+b.addEventListener('click', function(){
+  var o = n.classList.toggle('ouvert');
+  b.setAttribute('aria-expanded', o ? 'true' : 'false');
+});
+
+(function(){
+  var d=document.getElementById('diapo'); if(!d) return;
+  var sl=d.querySelectorAll('.slide'), dots=d.querySelectorAll('.dot'), i=0, t=null;
+  var calme=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function voir(n){
+    sl[i].classList.remove('actif'); sl[i].setAttribute('aria-hidden','true'); sl[i].tabIndex=-1; dots[i].classList.remove('actif');
+    i=(n+sl.length)%sl.length;
+    sl[i].classList.add('actif'); sl[i].removeAttribute('aria-hidden'); sl[i].tabIndex=0; dots[i].classList.add('actif');
+  }
+  function lancer(){ if(calme) return; arreter(); t=setInterval(function(){voir(i+1)},5000); }
+  function arreter(){ if(t){clearInterval(t);t=null;} }
+  d.querySelector('.prec').addEventListener('click',function(){voir(i-1);lancer();});
+  d.querySelector('.suiv').addEventListener('click',function(){voir(i+1);lancer();});
+  dots.forEach(function(b,k){b.addEventListener('click',function(){voir(k);lancer();});});
+  d.addEventListener('mouseenter',arreter); d.addEventListener('mouseleave',lancer);
+  d.addEventListener('focusin',arreter); d.addEventListener('focusout',lancer);
+  var x0=null;
+  d.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;},{passive:true});
+  d.addEventListener('touchend',function(e){ if(x0===null) return; var dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>40){voir(dx<0?i+1:i-1);lancer();} x0=null; });
+  lancer();
+})();
+</script>
+</body>
+</html>
