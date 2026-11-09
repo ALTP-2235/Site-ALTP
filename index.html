@@ -10,7 +10,7 @@
 <meta property="og:title" content="ALTP Travaux Publics – Plouisy, Guingamp (22)">
 <meta property="og:description" content="Terrassement, réseaux, voirie et aménagement de cours dans les Côtes-d'Armor.">
 <meta property="og:url" content="https://altp-2235.github.io/Site-ALTP/">
-<meta property="og:image" content="https://altp-2235.github.io/Site-ALTP/plesidy-cour.jpg">
+<meta property="og:image" content="https://altp-2235.github.io/Site-ALTP/exterieur-cour.jpg">
 <meta property="og:locale" content="fr_FR">
 <link rel="icon" href="logo.png">
 <script type="application/ld+json">
@@ -231,8 +231,10 @@ footer .ph,.zone .ph{color:var(--texte)}
 .real-photo:hover img{transform:scale(1.03)}
 .real + .real{margin-top:18px}
 .real.trois{grid-template-columns:1.1fr 1fr 1fr 1fr}
+.real.paysage{grid-template-columns:1fr 1fr}
+.real.paysage .real-photo img{aspect-ratio:4/3}
 @media (max-width:980px){.real,.real.trois{grid-template-columns:1fr 1fr}.real.trois .real-photo:last-child{grid-column:1/-1}.real.trois .real-photo:last-child img{aspect-ratio:16/10}.real-texte{grid-column:1/-1}}
-@media (max-width:620px){.real,.real.trois{grid-template-columns:1fr}}
+@media (max-width:620px){.real,.real.trois,.real.paysage{grid-template-columns:1fr}}
 
 /* Diaporama */
 .diapo{position:relative;height:min(56vw,520px);background:var(--marine);overflow:hidden}
@@ -296,8 +298,20 @@ footer .ph,.zone .ph{color:var(--texte)}
 </div>
 
 <div class="diapo" id="diapo" aria-roledescription="carrousel" aria-label="Photos de nos chantiers">
-    <a class="slide actif" href="#real-plesidy" aria-label="Aménagement d'une cour à Plésidy : voir la réalisation">
-      <img src="plesidy-cour.jpg" alt="Cour pavée devant une longère en pierre">
+    <a class="slide actif" href="#real-exterieur" aria-label="Aménagement extérieur de A à Z : voir la réalisation">
+      <img src="exterieur-cour.jpg" alt="Cour gravillonnée bordée d'un mur en pierre">
+      <span class="legende"><span class="leg-cat">Nos réalisations</span><span class="leg-titre">Aménagement extérieur de A à Z</span><span class="leg-lien">Voir le chantier →</span></span>
+    </a>
+    <a class="slide" href="#real-exterieur" aria-label="Aménagement extérieur de A à Z : voir la réalisation" aria-hidden="true" tabindex="-1">
+      <img src="exterieur-allee.jpg" alt="Allée en pavés de pierre naturelle" loading="lazy">
+      <span class="legende"><span class="leg-cat">Nos réalisations</span><span class="leg-titre">Aménagement extérieur de A à Z</span><span class="leg-lien">Voir le chantier →</span></span>
+    </a>
+    <a class="slide" href="#real-exterieur" aria-label="Aménagement extérieur de A à Z : voir la réalisation" aria-hidden="true" tabindex="-1">
+      <img src="exterieur-mur.jpg" alt="Allée pavée et parement en briques rouges" loading="lazy">
+      <span class="legende"><span class="leg-cat">Nos réalisations</span><span class="leg-titre">Aménagement extérieur de A à Z</span><span class="leg-lien">Voir le chantier →</span></span>
+    </a>
+    <a class="slide" href="#real-plesidy" aria-label="Aménagement d'une cour à Plésidy : voir la réalisation" aria-hidden="true" tabindex="-1">
+      <img src="plesidy-cour.jpg" alt="Cour pavée devant une longère en pierre" loading="lazy">
       <span class="legende"><span class="leg-cat">Nos réalisations</span><span class="leg-titre">Aménagement d'une cour à Plésidy</span><span class="leg-lien">Voir le chantier →</span></span>
     </a>
     <a class="slide" href="#real-abords" aria-label="Abords d'un bâtiment d'activité : voir la réalisation" aria-hidden="true" tabindex="-1">
@@ -326,7 +340,7 @@ footer .ph,.zone .ph{color:var(--texte)}
     </a>
   <button type="button" class="fleche prec" aria-label="Photo précédente">‹</button>
   <button type="button" class="fleche suiv" aria-label="Photo suivante">›</button>
-  <div class="dots"><button type="button" class="dot actif" aria-label="Photo 1"></button><button type="button" class="dot" aria-label="Photo 2"></button><button type="button" class="dot" aria-label="Photo 3"></button><button type="button" class="dot" aria-label="Photo 4"></button><button type="button" class="dot" aria-label="Photo 5"></button><button type="button" class="dot" aria-label="Photo 6"></button><button type="button" class="dot" aria-label="Photo 7"></button></div>
+  <div class="dots"><button type="button" class="dot actif" aria-label="Photo 1"></button><button type="button" class="dot" aria-label="Photo 2"></button><button type="button" class="dot" aria-label="Photo 3"></button><button type="button" class="dot" aria-label="Photo 4"></button><button type="button" class="dot" aria-label="Photo 5"></button><button type="button" class="dot" aria-label="Photo 6"></button><button type="button" class="dot" aria-label="Photo 7"></button><button type="button" class="dot" aria-label="Photo 8"></button><button type="button" class="dot" aria-label="Photo 9"></button><button type="button" class="dot" aria-label="Photo 10"></button></div>
 </div>
 
 <main id="contenu">
@@ -385,6 +399,19 @@ footer .ph,.zone .ph{color:var(--texte)}
 <section class="fond" id="realisations">
   <div class="wrap">
     <h2>Nos réalisations</h2>
+    <article class="real paysage" id="real-exterieur">
+      <div class="real-texte">
+        <span class="real-cat">Maçonnerie et aménagement de cours</span>
+        <h3>Aménagement extérieur de A à Z</h3>
+        <p>Réalisation d'un aménagement extérieur de A à Z : terrassement, création d'un mur en pierre, pose de bordures et de pavés, gravillonnage, apport de terre végétale et plantations. Finitions avec un parement en briques rouges pour un extérieur harmonieux et soigné.</p>
+        <dl>
+          <dt>Travaux</dt><dd>Terrassement, mur en pierre, bordures, pavage, gravillonnage, terre végétale, plantations, parement en briques</dd>
+        </dl>
+      </div>
+      <figure class="real-photo"><img src="exterieur-cour.jpg" alt="Cour gravillonnée bordée d'un mur en pierre et de massifs plantés" width="1400" height="1050" loading="lazy"></figure>
+      <figure class="real-photo"><img src="exterieur-mur.jpg" alt="Allée pavée avec bornes lumineuses, mur en pierre et parement en briques rouges" width="1400" height="1050" loading="lazy"></figure>
+      <figure class="real-photo"><img src="exterieur-allee.jpg" alt="Allée en pavés de pierre naturelle bordée de plantations" width="1400" height="1050" loading="lazy"></figure>
+    </article>
     <article class="real" id="real-plesidy">
       <div class="real-texte">
         <span class="real-cat">Maçonnerie et aménagement de cours</span>
