@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://altp-2235.github.io/Site-ALTP/sitemap.xml
