@@ -165,6 +165,10 @@ p + p{margin-top:14px}
 .haut{display:block;text-align:center;padding:18px 0;font-weight:600;color:var(--marine);text-decoration:none;font-size:.92rem}
 .haut:hover{color:var(--accent-fonce)}
 
+.mail-affiche{margin:22px auto 0;display:inline-block;background:var(--blanc);border-left:4px solid var(--accent);padding:14px 22px;font-size:1.15rem;color:var(--marine)}
+.mail-affiche strong{user-select:all}
+button.btn{cursor:pointer}
+
 /* Pied de page */
 footer{background:var(--marine-2);color:#c3cbe0;padding:56px 0 0;font-size:.95rem}
 .foot{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px;padding-bottom:40px}
@@ -433,8 +437,9 @@ footer .ph,.zone .ph{color:var(--texte)}
     <div class="boutons">
       <a class="btn" href="tel:+33680667713">Appeler le portable <span class="fl">→</span></a>
       <a class="btn" href="tel:+33296134235">Appeler le fixe <span class="fl">→</span></a>
-      <a class="btn contour" href="mailto:Altp2235@orange.fr">Envoyer un e-mail <span class="fl">→</span></a>
+      <button type="button" class="btn contour" id="btn-mail" aria-expanded="false" aria-controls="mail-affiche">Envoyer un e-mail <span class="fl">→</span></button>
     </div>
+    <p class="mail-affiche" id="mail-affiche" hidden>Écrivez-nous à <strong>Altp2235@orange.fr</strong></p>
   </div>
 </section>
 <a class="haut" href="#haut">↑ Retour en haut</a>
@@ -508,6 +513,16 @@ b.addEventListener('click', function(){
   d.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;},{passive:true});
   d.addEventListener('touchend',function(e){ if(x0===null) return; var dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>40){voir(dx<0?i+1:i-1);lancer();} x0=null; });
   lancer();
+})();
+
+(function(){
+  var b=document.getElementById('btn-mail'), m=document.getElementById('mail-affiche');
+  if(!b||!m) return;
+  b.addEventListener('click',function(){
+    var ouvert=m.hidden;
+    m.hidden=!ouvert;
+    b.setAttribute('aria-expanded', ouvert ? 'true' : 'false');
+  });
 })();
 </script>
 </body>
