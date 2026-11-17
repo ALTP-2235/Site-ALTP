@@ -186,6 +186,20 @@ footer .adresse a{text-decoration:underline;text-decoration-color:var(--accent);
 @media (max-width:980px){.nav-tel{padding:10px 14px;font-size:.8rem}}
 @media (max-width:620px){.nav{gap:10px}.logo img{height:42px}.nav-tel{margin-left:auto}}
 
+
+/* Location d'engins */
+.location{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:48px;align-items:center}
+.location-photo{margin:0;background:var(--marine);overflow:hidden;border-top:4px solid var(--accent)}
+.location-photo img{display:block;width:100%;height:auto;max-height:620px;object-fit:cover}
+.formules{list-style:none;display:grid;gap:14px;margin:24px 0 6px}
+.formules li{background:var(--fond);border-left:4px solid var(--accent);padding:16px 20px;display:grid;gap:4px}
+.formules b{font-family:var(--display);font-stretch:125%;font-weight:800;text-transform:uppercase;color:var(--marine);font-size:.95rem;letter-spacing:.03em}
+.formules span{color:var(--texte-doux);font-size:.98rem}
+.carte-lien{margin-top:6px;font-weight:600;font-size:.9rem;color:var(--accent-fonce);text-decoration:none}
+.carte-lien:hover{text-decoration:underline}
+#location{scroll-margin-top:100px}
+@media (max-width:860px){.location{grid-template-columns:1fr;gap:28px}.location-photo img{max-height:460px}}
+
 /* Pied de page */
 footer{background:var(--marine-2);color:#c3cbe0;padding:56px 0 0;font-size:.95rem}
 .foot{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px;padding-bottom:40px}
@@ -295,8 +309,8 @@ footer .ph,.zone .ph{color:var(--texte)}
           <li><a href="#metiers">Voirie</a></li>
           <li><a href="#metiers">Maçonnerie et cours</a></li>
           <li><a href="#metiers">Démolition</a></li>
-          <li><a href="#metiers">Location d'engins avec chauffeur</a></li>
-          <li><a href="#metiers">Location d'engins sans chauffeur</a></li>
+          <li><a href="#location">Location d'engins avec chauffeur</a></li>
+          <li><a href="#location">Location d'engins sans chauffeur</a></li>
         </ul>
       </li>
       <li><a href="#realisations">Références</a></li>
@@ -396,8 +410,26 @@ footer .ph,.zone .ph{color:var(--texte)}
       <li><span class="nom">Démolition</span><span class="desc">Déconstruction et évacuation des gravats.</span></li>
       <li><span class="nom">Location d'engins</span><span class="desc">Deux formules au choix :</span>
         <span class="formule"><b>Avec chauffeur</b> : mini-pelle ou engin, avec un conducteur ALTP.</span>
-        <span class="formule"><b>Sans chauffeur</b> : l'engin seul, conduit par vos équipes.</span></li>
+        <span class="formule"><b>Sans chauffeur</b> : l'engin seul, conduit par vos équipes.</span>
+        <a class="carte-lien" href="#location">Voir la location d'engins →</a></li>
     </ul>
+  </div>
+</section>
+
+<section id="location">
+  <div class="wrap location">
+    <figure class="location-photo"><img src="location-tractopelle.jpg" alt="Location de tractopelle avec ou sans chauffeur près de Guingamp, Côtes-d'Armor" width="705" height="1200" loading="lazy"></figure>
+    <div class="location-texte texte">
+      <h2>Location d'engins</h2>
+      <p>Besoin d'un tractopelle ou d'une mini-pelle pour votre chantier ? ALTP loue ses engins dans le secteur de Guingamp et dans les Côtes-d'Armor, selon deux formules.</p>
+      <ul class="formules">
+        <li><b>Location avec chauffeur</b><span>L'engin et un conducteur ALTP expérimenté. Vous nous indiquez le travail à faire, nous nous occupons du reste.</span></li>
+        <li><b>Location sans chauffeur</b><span>L'engin seul, entretenu par notre atelier, conduit par vos équipes.</span></li>
+      </ul>
+      <div class="boutons">
+        <a class="btn" href="#contact">Demander une location <span class="fl">→</span></a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -514,8 +546,8 @@ footer .ph,.zone .ph{color:var(--texte)}
         <li><a href="#metiers">Voirie</a></li>
         <li><a href="#metiers">Maçonnerie et cours</a></li>
         <li><a href="#metiers">Démolition</a></li>
-        <li><a href="#metiers">Location avec chauffeur</a></li>
-        <li><a href="#metiers">Location sans chauffeur</a></li>
+        <li><a href="#location">Location avec chauffeur</a></li>
+        <li><a href="#location">Location sans chauffeur</a></li>
       </ul>
     </div>
     <div>
